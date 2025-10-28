@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@sac/windsurf-website",
+  "version": "1.2.0",
+  "description": "Professional kinetic website for Student Activity Council (S.A.C.) Windsurfing Club featuring advanced CSS animations, momentum-based physics, and responsive design",
+  "main": "index.html",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "start": "npm run serve",
+    "dev": "npx live-server --port=8080 --open=/index.html --watch=.",
+    "serve": "npx serve . --single --listen 8080",
+    "serve:python": "python -m http.server 8080",
+    "build": "npm run validate && npm run optimize",
+    "validate": "npx html-validate index.html",
+    "optimize": "echo 'Optimizing assets...' && npm run minify:css && npm run minify:js",
+    "minify:css": "npx cleancss-cli styles.css -o dist/styles.min.css",
+    "minify:js": "npx terser script.js -o dist/script.min.js --compress --mangle",
+    "test": "npm run validate && npm run lighthouse",
+    "lighthouse": "npx lighthouse http://localhost:8080 --output=html --output-path=./reports/lighthouse.html",
+    "deploy": "npm run build && npm run deploy:netlify",
+    "deploy:netlify": "npx netlify deploy --prod --dir=.",
+    "preview": "npm run serve",
+    "clean": "rm -rf dist reports node_modules/.cache",
+    "format": "npx prettier --write *.html *.css *.js *.json *.md",
+    "lint": "npx eslint script.js --fix"
+  },
+  "keywords": [
+    "windsurfing",
+    "student-activity-council",
+    "sac",
+    "website",
+    "kinetic-design",
+    "css-animations",
+    "responsive-design",
+    "momentum-physics",
+    "parallax-scrolling",
+    "modern-web",
+    "performance-optimized",
+    "mobile-first",
+    "accessibility",
+    "progressive-enhancement"
+  ],
+  "author": {
+    "name": "S.A.C. Development Team",
+    "email": "dev@sacwindsurf.com",
+    "url": "https://sacwindsurf.com/team"
+  },
+  "contributors": [
+    {
+      "name": "Lead Developer",
+      "email": "lead@sacwindsurf.com",
+      "role": "Frontend Architecture & Kinetic Design"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sac/windsurf-website/issues",
+    "email": "support@sacwindsurf.com"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/sac-windsurf"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@netlify/cli": "^17.0.0",
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.7.4",
+    "lighthouse": "^11.4.0",
+    "live-server": "^1.2.2",
+    "prettier": "^3.1.1",
+    "serve": "^14.2.1",
+    "terser": "^5.26.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sac/windsurf-website.git"
+  },
+  "homepage": "https://sacwindsurf.com",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "config": {
+    "port": 8080,
+    "host": "localhost"
+  },
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "assets/",
+    "README.md",
+    "LICENSE"
+  ],
+  "directories": {
+    "doc": "docs",
+    "test": "tests",
+    "example": "examples"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
